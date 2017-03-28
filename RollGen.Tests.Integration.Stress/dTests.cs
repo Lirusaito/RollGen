@@ -5,7 +5,7 @@ using System;
 namespace RollGen.Tests.Integration.Stress
 {
     [TestFixture]
-    public class dTests : StressTests
+    public class DTests : StressTests
     {
         [Inject]
         public IDice Dice { get; set; }

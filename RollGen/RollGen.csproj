@@ -49,7 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Dice.cs" />
+    <Compile Include="IDice.cs" />
     <Compile Include="Limits.cs" />
     <Compile Include="PartialRoll.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

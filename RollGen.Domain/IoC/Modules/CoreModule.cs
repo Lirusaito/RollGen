@@ -13,7 +13,7 @@ namespace RollGen.Domain.IoC.Modules
             Bind<Random>().ToSelf().InSingletonScope();
             Bind<IDice>().To<DomainDice>();
             Bind<IPartialRollFactory>().To<DomainPartialRollFactory>();
-            Bind<ExpressionEvaluator>().To<AlbatrossExpressionEvaluator>();
+            Bind<IExpressionEvaluator>().To<AlbatrossExpressionEvaluator>();
             Bind<IParser>().ToMethod(c => Parser.GetParser());
         }
     }

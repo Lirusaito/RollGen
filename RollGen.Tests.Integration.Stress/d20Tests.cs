@@ -3,7 +3,7 @@
 namespace RollGen.Tests.Integration.Stress
 {
     [TestFixture]
-    public class d20Tests : ProvidedDiceTests
+    public class D20Tests : ProvidedDiceTests
     {
         protected override int Die
         {

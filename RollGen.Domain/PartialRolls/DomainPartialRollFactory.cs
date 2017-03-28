@@ -6,9 +6,9 @@ namespace RollGen.Domain.PartialRolls
     internal class DomainPartialRollFactory : IPartialRollFactory
     {
         private readonly Random random;
-        private readonly ExpressionEvaluator expressionEvaluator;
+        private readonly IExpressionEvaluator expressionEvaluator;
 
-        public DomainPartialRollFactory(Random random, ExpressionEvaluator expressionEvaluator)
+        public DomainPartialRollFactory(Random random, IExpressionEvaluator expressionEvaluator)
         {
             this.random = random;
             this.expressionEvaluator = expressionEvaluator;

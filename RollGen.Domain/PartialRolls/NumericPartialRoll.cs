@@ -9,10 +9,10 @@ namespace RollGen.Domain.PartialRolls
     internal class NumericPartialRoll : PartialRoll
     {
         private readonly Random random;
-        private readonly ExpressionEvaluator expressionEvaluator;
+        private readonly IExpressionEvaluator expressionEvaluator;
         private readonly Regex strictRollRegex;
 
-        private NumericPartialRoll(Random random, ExpressionEvaluator expressionEvaluator)
+        private NumericPartialRoll(Random random, IExpressionEvaluator expressionEvaluator)
         {
             this.random = random;
             this.expressionEvaluator = expressionEvaluator;
@@ -20,7 +20,7 @@ namespace RollGen.Domain.PartialRolls
             strictRollRegex = new Regex(RegexConstants.StrictRollPattern);
         }
 
-        public NumericPartialRoll(int quantity, Random random, ExpressionEvaluator expressionEvaluator)
+        public NumericPartialRoll(int quantity, Random random, IExpressionEvaluator expressionEvaluator)
             : this(random, expressionEvaluator)
         {
             CurrentRollExpression = $"{quantity}";

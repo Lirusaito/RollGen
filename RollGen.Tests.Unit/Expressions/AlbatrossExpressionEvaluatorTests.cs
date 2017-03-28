@@ -10,7 +10,7 @@ namespace RollGen.Tests.Unit.Expressions
     {
         private const string Expression = "expression";
 
-        private ExpressionEvaluator expressionEvaluator;
+        private IExpressionEvaluator expressionEvaluator;
         private Mock<IParser> mockParser;
 
         [SetUp]

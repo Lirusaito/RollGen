@@ -11,13 +11,13 @@ namespace RollGen.Tests.Unit.PartialRolls
     {
         private IPartialRollFactory partialRollFactory;
         private Mock<Random> mockRandom;
-        private Mock<ExpressionEvaluator> mockExpressionEvaluator;
+        private Mock<IExpressionEvaluator> mockExpressionEvaluator;
 
         [SetUp]
         public void Setup()
         {
             mockRandom = new Mock<Random>();
-            mockExpressionEvaluator = new Mock<ExpressionEvaluator>();
+            mockExpressionEvaluator = new Mock<IExpressionEvaluator>();
             partialRollFactory = new DomainPartialRollFactory(mockRandom.Object, mockExpressionEvaluator.Object);
         }
 
