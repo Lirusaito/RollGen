@@ -11,14 +11,14 @@ namespace RollGen.Tests.Unit.PartialRolls
     public class NumericPartialRollTests
     {
         private PartialRoll numericPartialRoll;
-        private Mock<ExpressionEvaluator> mockExpressionEvaluator;
+        private Mock<IExpressionEvaluator> mockExpressionEvaluator;
         private Mock<Random> mockRandom;
 
         [SetUp]
         public void Setup()
         {
             mockRandom = new Mock<Random>();
-            mockExpressionEvaluator = new Mock<ExpressionEvaluator>();
+            mockExpressionEvaluator = new Mock<IExpressionEvaluator>();
 
             var count = 0;
             mockRandom.Setup(r => r.Next(It.IsAny<int>())).Returns((int max) => count++ % max);
@@ -27,8 +27,7 @@ namespace RollGen.Tests.Unit.PartialRolls
 
         private int DefaultValue(string source)
         {
-            var output = 0;
-            if (int.TryParse(source, out output))
+            if (int.TryParse(source, out var output))
                 return output;
 
             throw new ArgumentException($"{source} was not configured to be evaluated");
@@ -197,7 +196,7 @@ namespace RollGen.Tests.Unit.PartialRolls
         }
 
         [Test]
-        public void dUpdatesCurrentRoll()
+        public void DUpdatesCurrentRoll()
         {
             BuildPartialRoll(9266);
             numericPartialRoll = numericPartialRoll.D(90210);
@@ -205,7 +204,7 @@ namespace RollGen.Tests.Unit.PartialRolls
         }
 
         [Test]
-        public void d2UpdatesCurrentRoll()
+        public void D2UpdatesCurrentRoll()
         {
             BuildPartialRoll(9266);
             numericPartialRoll = numericPartialRoll.D2();
@@ -213,7 +212,7 @@ namespace RollGen.Tests.Unit.PartialRolls
         }
 
         [Test]
-        public void d3UpdatesCurrentRoll()
+        public void D3UpdatesCurrentRoll()
         {
             BuildPartialRoll(9266);
             numericPartialRoll = numericPartialRoll.D3();
@@ -221,7 +220,7 @@ namespace RollGen.Tests.Unit.PartialRolls
         }
 
         [Test]
-        public void d4UpdatesCurrentRoll()
+        public void D4UpdatesCurrentRoll()
         {
             BuildPartialRoll(9266);
             numericPartialRoll = numericPartialRoll.D4();
@@ -229,7 +228,7 @@ namespace RollGen.Tests.Unit.PartialRolls
         }
 
         [Test]
-        public void d6UpdatesCurrentRoll()
+        public void D6UpdatesCurrentRoll()
         {
             BuildPartialRoll(9266);
             numericPartialRoll = numericPartialRoll.D6();
@@ -237,7 +236,7 @@ namespace RollGen.Tests.Unit.PartialRolls
         }
 
         [Test]
-        public void d8UpdatesCurrentRoll()
+        public void D8UpdatesCurrentRoll()
         {
             BuildPartialRoll(9266);
             numericPartialRoll = numericPartialRoll.D8();
@@ -245,7 +244,7 @@ namespace RollGen.Tests.Unit.PartialRolls
         }
 
         [Test]
-        public void d10UpdatesCurrentRoll()
+        public void D10UpdatesCurrentRoll()
         {
             BuildPartialRoll(9266);
             numericPartialRoll = numericPartialRoll.D10();
@@ -253,7 +252,7 @@ namespace RollGen.Tests.Unit.PartialRolls
         }
 
         [Test]
-        public void d12UpdatesCurrentRoll()
+        public void D12UpdatesCurrentRoll()
         {
             BuildPartialRoll(9266);
             numericPartialRoll = numericPartialRoll.D12();
@@ -261,7 +260,7 @@ namespace RollGen.Tests.Unit.PartialRolls
         }
 
         [Test]
-        public void d20UpdatesCurrentRoll()
+        public void D20UpdatesCurrentRoll()
         {
             BuildPartialRoll(9266);
             numericPartialRoll = numericPartialRoll.D20();

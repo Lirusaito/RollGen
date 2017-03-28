@@ -11,14 +11,14 @@ namespace RollGen.Tests.Unit.PartialRolls
     public class ExpressionPartialRollTests
     {
         private PartialRoll expressionPartialRoll;
-        private Mock<ExpressionEvaluator> mockExpressionEvaluator;
+        private Mock<IExpressionEvaluator> mockExpressionEvaluator;
         private Mock<Random> mockRandom;
 
         [SetUp]
         public void Setup()
         {
             mockRandom = new Mock<Random>();
-            mockExpressionEvaluator = new Mock<ExpressionEvaluator>();
+            mockExpressionEvaluator = new Mock<IExpressionEvaluator>();
 
             var count = 0;
             mockRandom.Setup(r => r.Next(It.IsAny<int>())).Returns((int max) => count++ % max);
@@ -27,8 +27,7 @@ namespace RollGen.Tests.Unit.PartialRolls
 
         private int DefaultValue(string source)
         {
-            var output = 0;
-            if (int.TryParse(source, out output))
+            if (int.TryParse(source, out var output))
                 return output;
 
             throw new ArgumentException($"{source} was not configured to be evaluated");
@@ -439,63 +438,63 @@ namespace RollGen.Tests.Unit.PartialRolls
         }
 
         [Test]
-        public void dThrowsNotImplementedException()
+        public void DThrowsNotImplementedException()
         {
             BuildPartialRoll("3d2k1");
             Assert.That(() => expressionPartialRoll.D(1), Throws.InstanceOf<NotImplementedException>().With.Message.EqualTo("Cannot yet implement paranthetical expressions"));
         }
 
         [Test]
-        public void d2ThrowsNotImplementedException()
+        public void D2ThrowsNotImplementedException()
         {
             BuildPartialRoll("3d2k1");
             Assert.That(() => expressionPartialRoll.D2(), Throws.InstanceOf<NotImplementedException>().With.Message.EqualTo("Cannot yet implement paranthetical expressions"));
         }
 
         [Test]
-        public void d3ThrowsNotImplementedException()
+        public void D3ThrowsNotImplementedException()
         {
             BuildPartialRoll("3d2k1");
             Assert.That(() => expressionPartialRoll.D3(), Throws.InstanceOf<NotImplementedException>().With.Message.EqualTo("Cannot yet implement paranthetical expressions"));
         }
 
         [Test]
-        public void d4ThrowsNotImplementedException()
+        public void D4ThrowsNotImplementedException()
         {
             BuildPartialRoll("3d2k1");
             Assert.That(() => expressionPartialRoll.D4(), Throws.InstanceOf<NotImplementedException>().With.Message.EqualTo("Cannot yet implement paranthetical expressions"));
         }
 
         [Test]
-        public void d6ThrowsNotImplementedException()
+        public void D6ThrowsNotImplementedException()
         {
             BuildPartialRoll("3d2k1");
             Assert.That(() => expressionPartialRoll.D6(), Throws.InstanceOf<NotImplementedException>().With.Message.EqualTo("Cannot yet implement paranthetical expressions"));
         }
 
         [Test]
-        public void d8ThrowsNotImplementedException()
+        public void D8ThrowsNotImplementedException()
         {
             BuildPartialRoll("3d2k1");
             Assert.That(() => expressionPartialRoll.D8(), Throws.InstanceOf<NotImplementedException>().With.Message.EqualTo("Cannot yet implement paranthetical expressions"));
         }
 
         [Test]
-        public void d10ThrowsNotImplementedException()
+        public void D10ThrowsNotImplementedException()
         {
             BuildPartialRoll("3d2k1");
             Assert.That(() => expressionPartialRoll.D10(), Throws.InstanceOf<NotImplementedException>().With.Message.EqualTo("Cannot yet implement paranthetical expressions"));
         }
 
         [Test]
-        public void d12ThrowsNotImplementedException()
+        public void D12ThrowsNotImplementedException()
         {
             BuildPartialRoll("3d2k1");
             Assert.That(() => expressionPartialRoll.D12(), Throws.InstanceOf<NotImplementedException>().With.Message.EqualTo("Cannot yet implement paranthetical expressions"));
         }
 
         [Test]
-        public void d20ThrowsNotImplementedException()
+        public void D20ThrowsNotImplementedException()
         {
             BuildPartialRoll("3d2k1");
             Assert.That(() => expressionPartialRoll.D20(), Throws.InstanceOf<NotImplementedException>().With.Message.EqualTo("Cannot yet implement paranthetical expressions"));

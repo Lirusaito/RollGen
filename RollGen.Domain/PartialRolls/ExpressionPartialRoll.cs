@@ -9,11 +9,11 @@ namespace RollGen.Domain.PartialRolls
     internal class ExpressionPartialRoll : PartialRoll
     {
         private readonly Random random;
-        private readonly ExpressionEvaluator expressionEvaluator;
+        private readonly IExpressionEvaluator expressionEvaluator;
         private readonly Regex strictRollRegex;
         private readonly Regex booleanExpressionRegex;
 
-        private ExpressionPartialRoll(Random random, ExpressionEvaluator expressionEvaluator)
+        private ExpressionPartialRoll(Random random, IExpressionEvaluator expressionEvaluator)
         {
             this.random = random;
             this.expressionEvaluator = expressionEvaluator;
@@ -22,7 +22,7 @@ namespace RollGen.Domain.PartialRolls
             booleanExpressionRegex = new Regex(RegexConstants.BooleanExpressionPattern);
         }
 
-        public ExpressionPartialRoll(string rollExpression, Random random, ExpressionEvaluator expressionEvaluator)
+        public ExpressionPartialRoll(string rollExpression, Random random, IExpressionEvaluator expressionEvaluator)
             : this(random, expressionEvaluator)
         {
             CurrentRollExpression = rollExpression;

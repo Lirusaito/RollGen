@@ -4,7 +4,7 @@ using System.Text.RegularExpressions;
 
 namespace RollGen.Domain.Expressions
 {
-    internal class AlbatrossExpressionEvaluator : ExpressionEvaluator
+    internal class AlbatrossExpressionEvaluator : IExpressionEvaluator
     {
         private const string CommonRollRegexPattern = "d *\\d+(?: *k *\\d+)?";
 

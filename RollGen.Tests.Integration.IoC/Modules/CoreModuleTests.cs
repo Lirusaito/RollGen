@@ -36,7 +36,7 @@ namespace RollGen.Tests.Bootstrap.Modules
         [Test]
         public void ExpressionEvaluatorIsInjected()
         {
-            var evaluator = GetNewInstanceOf<ExpressionEvaluator>();
+            var evaluator = GetNewInstanceOf<IExpressionEvaluator>();
             Assert.That(evaluator, Is.Not.Null);
             Assert.That(evaluator, Is.InstanceOf<AlbatrossExpressionEvaluator>());
         }
