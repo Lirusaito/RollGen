@@ -5,14 +5,14 @@ namespace RollGen.Tests.Integration.Stress
     [TestFixture]
     public class d20Tests : ProvidedDiceTests
     {
-        protected override int die
+        protected override int Die
         {
             get { return 20; }
         }
 
         protected override int GetRoll(int quantity)
         {
-            return Dice.Roll(quantity).d20().AsSum();
+            return Dice.Roll(quantity).D20().AsSum();
         }
 
         [Test]

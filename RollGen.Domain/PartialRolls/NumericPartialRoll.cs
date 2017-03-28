@@ -63,7 +63,7 @@ namespace RollGen.Domain.PartialRolls
             return sum >= average;
         }
 
-        public override PartialRoll d(int die)
+        public override PartialRoll D(int die)
         {
             CurrentRollExpression += $"d{die}";
             return this;

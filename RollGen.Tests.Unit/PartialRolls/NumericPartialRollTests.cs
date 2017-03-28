@@ -55,7 +55,7 @@ namespace RollGen.Tests.Unit.PartialRolls
             BuildPartialRoll(9266);
             Assert.That(numericPartialRoll.CurrentRollExpression, Is.EqualTo("9266"));
 
-            numericPartialRoll = numericPartialRoll.d2();
+            numericPartialRoll = numericPartialRoll.D2();
             Assert.That(numericPartialRoll.CurrentRollExpression, Is.EqualTo("9266d2"));
 
             var sum = numericPartialRoll.AsSum();
@@ -68,7 +68,7 @@ namespace RollGen.Tests.Unit.PartialRolls
             BuildPartialRoll(9266);
             Assert.That(numericPartialRoll.CurrentRollExpression, Is.EqualTo("9266"));
 
-            numericPartialRoll = numericPartialRoll.d3();
+            numericPartialRoll = numericPartialRoll.D3();
             Assert.That(numericPartialRoll.CurrentRollExpression, Is.EqualTo("9266d3"));
 
             var rolls = numericPartialRoll.AsIndividualRolls();
@@ -82,7 +82,7 @@ namespace RollGen.Tests.Unit.PartialRolls
         public void ReturnAsAverageFromQuantity()
         {
             BuildPartialRoll(1);
-            var average = numericPartialRoll.d3().AsPotentialAverage();
+            var average = numericPartialRoll.D3().AsPotentialAverage();
             Assert.That(average, Is.EqualTo(2));
         }
 
@@ -90,7 +90,7 @@ namespace RollGen.Tests.Unit.PartialRolls
         public void ReturnAsAverageUnroundedFromQuantity()
         {
             BuildPartialRoll(1);
-            var average = numericPartialRoll.d2().AsPotentialAverage();
+            var average = numericPartialRoll.D2().AsPotentialAverage();
             Assert.That(average, Is.EqualTo(1.5));
         }
 
@@ -98,7 +98,7 @@ namespace RollGen.Tests.Unit.PartialRolls
         public void ReturnAsMinimumFromQuantity()
         {
             BuildPartialRoll(9266);
-            var average = numericPartialRoll.d(90210).AsPotentialMinimum();
+            var average = numericPartialRoll.D(90210).AsPotentialMinimum();
             Assert.That(average, Is.EqualTo(9266));
         }
 
@@ -106,7 +106,7 @@ namespace RollGen.Tests.Unit.PartialRolls
         public void ReturnAsMaximumFromQuantity()
         {
             BuildPartialRoll(9266);
-            var average = numericPartialRoll.d(90210).AsPotentialMaximum();
+            var average = numericPartialRoll.D(90210).AsPotentialMaximum();
             Assert.That(average, Is.EqualTo(9266 * 90210));
         }
 
@@ -116,7 +116,7 @@ namespace RollGen.Tests.Unit.PartialRolls
             BuildPartialRoll(1);
             mockRandom.Setup(r => r.Next(2)).Returns(1);
 
-            numericPartialRoll = numericPartialRoll.d2();
+            numericPartialRoll = numericPartialRoll.D2();
             Assert.That(numericPartialRoll.CurrentRollExpression, Is.EqualTo("1d2"));
 
             var result = numericPartialRoll.AsTrueOrFalse();
@@ -129,7 +129,7 @@ namespace RollGen.Tests.Unit.PartialRolls
             BuildPartialRoll(1);
             mockRandom.Setup(r => r.Next(3)).Returns(1);
 
-            numericPartialRoll = numericPartialRoll.d3();
+            numericPartialRoll = numericPartialRoll.D3();
             Assert.That(numericPartialRoll.CurrentRollExpression, Is.EqualTo("1d3"));
 
             var result = numericPartialRoll.AsTrueOrFalse();
@@ -142,7 +142,7 @@ namespace RollGen.Tests.Unit.PartialRolls
             BuildPartialRoll(1);
             mockRandom.Setup(r => r.Next(2)).Returns(0);
 
-            numericPartialRoll = numericPartialRoll.d2();
+            numericPartialRoll = numericPartialRoll.D2();
             Assert.That(numericPartialRoll.CurrentRollExpression, Is.EqualTo("1d2"));
 
             var result = numericPartialRoll.AsTrueOrFalse();
@@ -154,7 +154,7 @@ namespace RollGen.Tests.Unit.PartialRolls
         {
             BuildPartialRoll(9266);
 
-            var result = numericPartialRoll.d(90210);
+            var result = numericPartialRoll.D(90210);
             var sum = result.AsSum();
             Assert.That(sum, Is.EqualTo(9266 * 9267 / 2));
         }
@@ -164,7 +164,7 @@ namespace RollGen.Tests.Unit.PartialRolls
         {
             BuildPartialRoll(9266);
 
-            var result = numericPartialRoll.d(90210);
+            var result = numericPartialRoll.D(90210);
             var keptRolls = result.Keeping(42).AsIndividualRolls();
 
             for (var roll = 9266; roll > 9266 - 42; roll--)
@@ -179,7 +179,7 @@ namespace RollGen.Tests.Unit.PartialRolls
             BuildPartialRoll(4);
             mockRandom.SetupSequence(r => r.Next(6)).Returns(5).Returns(1).Returns(2).Returns(5);
 
-            var result = numericPartialRoll.d6();
+            var result = numericPartialRoll.D6();
             var keptRolls = result.Keeping(3).AsIndividualRolls();
 
             Assert.That(keptRolls, Contains.Item(6));
@@ -192,7 +192,7 @@ namespace RollGen.Tests.Unit.PartialRolls
         public void KeepingUpdatesCurrentRoll()
         {
             BuildPartialRoll(9266);
-            numericPartialRoll = numericPartialRoll.d2().Keeping(90210);
+            numericPartialRoll = numericPartialRoll.D2().Keeping(90210);
             Assert.That(numericPartialRoll.CurrentRollExpression, Is.EqualTo("9266d2k90210"));
         }
 
@@ -200,7 +200,7 @@ namespace RollGen.Tests.Unit.PartialRolls
         public void dUpdatesCurrentRoll()
         {
             BuildPartialRoll(9266);
-            numericPartialRoll = numericPartialRoll.d(90210);
+            numericPartialRoll = numericPartialRoll.D(90210);
             Assert.That(numericPartialRoll.CurrentRollExpression, Is.EqualTo("9266d90210"));
         }
 
@@ -208,7 +208,7 @@ namespace RollGen.Tests.Unit.PartialRolls
         public void d2UpdatesCurrentRoll()
         {
             BuildPartialRoll(9266);
-            numericPartialRoll = numericPartialRoll.d2();
+            numericPartialRoll = numericPartialRoll.D2();
             Assert.That(numericPartialRoll.CurrentRollExpression, Is.EqualTo("9266d2"));
         }
 
@@ -216,7 +216,7 @@ namespace RollGen.Tests.Unit.PartialRolls
         public void d3UpdatesCurrentRoll()
         {
             BuildPartialRoll(9266);
-            numericPartialRoll = numericPartialRoll.d3();
+            numericPartialRoll = numericPartialRoll.D3();
             Assert.That(numericPartialRoll.CurrentRollExpression, Is.EqualTo("9266d3"));
         }
 
@@ -224,7 +224,7 @@ namespace RollGen.Tests.Unit.PartialRolls
         public void d4UpdatesCurrentRoll()
         {
             BuildPartialRoll(9266);
-            numericPartialRoll = numericPartialRoll.d4();
+            numericPartialRoll = numericPartialRoll.D4();
             Assert.That(numericPartialRoll.CurrentRollExpression, Is.EqualTo("9266d4"));
         }
 
@@ -232,7 +232,7 @@ namespace RollGen.Tests.Unit.PartialRolls
         public void d6UpdatesCurrentRoll()
         {
             BuildPartialRoll(9266);
-            numericPartialRoll = numericPartialRoll.d6();
+            numericPartialRoll = numericPartialRoll.D6();
             Assert.That(numericPartialRoll.CurrentRollExpression, Is.EqualTo("9266d6"));
         }
 
@@ -240,7 +240,7 @@ namespace RollGen.Tests.Unit.PartialRolls
         public void d8UpdatesCurrentRoll()
         {
             BuildPartialRoll(9266);
-            numericPartialRoll = numericPartialRoll.d8();
+            numericPartialRoll = numericPartialRoll.D8();
             Assert.That(numericPartialRoll.CurrentRollExpression, Is.EqualTo("9266d8"));
         }
 
@@ -248,7 +248,7 @@ namespace RollGen.Tests.Unit.PartialRolls
         public void d10UpdatesCurrentRoll()
         {
             BuildPartialRoll(9266);
-            numericPartialRoll = numericPartialRoll.d10();
+            numericPartialRoll = numericPartialRoll.D10();
             Assert.That(numericPartialRoll.CurrentRollExpression, Is.EqualTo("9266d10"));
         }
 
@@ -256,7 +256,7 @@ namespace RollGen.Tests.Unit.PartialRolls
         public void d12UpdatesCurrentRoll()
         {
             BuildPartialRoll(9266);
-            numericPartialRoll = numericPartialRoll.d12();
+            numericPartialRoll = numericPartialRoll.D12();
             Assert.That(numericPartialRoll.CurrentRollExpression, Is.EqualTo("9266d12"));
         }
 
@@ -264,7 +264,7 @@ namespace RollGen.Tests.Unit.PartialRolls
         public void d20UpdatesCurrentRoll()
         {
             BuildPartialRoll(9266);
-            numericPartialRoll = numericPartialRoll.d20();
+            numericPartialRoll = numericPartialRoll.D20();
             Assert.That(numericPartialRoll.CurrentRollExpression, Is.EqualTo("9266d20"));
         }
 

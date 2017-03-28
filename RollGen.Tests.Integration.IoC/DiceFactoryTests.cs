@@ -21,8 +21,8 @@ namespace RollGen.Tests.Integration.IoC
             var dice1 = DiceFactory.Create();
             var dice2 = DiceFactory.Create();
 
-            var roll1 = dice1.Roll().d(Limits.Die).AsSum();
-            var roll2 = dice2.Roll().d(Limits.Die).AsSum();
+            var roll1 = dice1.Roll().D(Limits.Die).AsSum();
+            var roll2 = dice2.Roll().D(Limits.Die).AsSum();
 
             Assert.That(roll1, Is.Not.EqualTo(roll2));
         }

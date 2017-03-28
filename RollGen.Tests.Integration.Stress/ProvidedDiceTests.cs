@@ -7,9 +7,9 @@ namespace RollGen.Tests.Integration.Stress
     public abstract class ProvidedDiceTests : StressTests
     {
         [Inject]
-        public Dice Dice { get; set; }
+        public IDice Dice { get; set; }
 
-        protected abstract int die { get; }
+        protected abstract int Die { get; }
 
         protected abstract int GetRoll(int quantity);
 
@@ -18,7 +18,7 @@ namespace RollGen.Tests.Integration.Stress
         protected void AssertRollWithLargestDieRollPossible()
         {
             var roll = GetRoll(Limits.Quantity);
-            Assert.That(roll, Is.InRange(Limits.Quantity, Limits.Quantity * die));
+            Assert.That(roll, Is.InRange(Limits.Quantity, Limits.Quantity * Die));
         }
     }
 }

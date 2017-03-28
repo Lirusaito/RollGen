@@ -7,7 +7,7 @@ namespace RollGen.Domain.IoC
         private static IKernel kernel = new StandardKernel();
         private static bool modulesLoaded = false;
 
-        public static Dice Create()
+        public static IDice Create()
         {
             if (!modulesLoaded)
             {
@@ -16,7 +16,7 @@ namespace RollGen.Domain.IoC
                 modulesLoaded = true;
             }
 
-            return kernel.Get<Dice>();
+            return kernel.Get<IDice>();
         }
     }
 }

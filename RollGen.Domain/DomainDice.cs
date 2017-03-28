@@ -7,14 +7,14 @@ using System.Text.RegularExpressions;
 
 namespace RollGen.Domain
 {
-    internal class DomainDice : Dice
+    internal class DomainDice : IDice
     {
-        private PartialRollFactory partialRollFactory;
+        private IPartialRollFactory partialRollFactory;
         private Regex expressionRegex;
         private Regex strictRollRegex;
         private Regex lenientRollRegex;
 
-        public DomainDice(PartialRollFactory partialRollFactory)
+        public DomainDice(IPartialRollFactory partialRollFactory)
         {
             this.partialRollFactory = partialRollFactory;
 
