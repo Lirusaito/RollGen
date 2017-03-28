@@ -8,7 +8,7 @@ namespace RollGen.Tests.Integration.Stress
     public class dTests : StressTests
     {
         [Inject]
-        public Dice Dice { get; set; }
+        public IDice Dice { get; set; }
 
         [TestCase(1, Limits.Die)]
         [TestCase(Limits.Quantity, 1)]
@@ -26,7 +26,7 @@ namespace RollGen.Tests.Integration.Stress
 
         private void AssertRoll(int quantity, int die)
         {
-            var roll = Dice.Roll(quantity).d(die).AsSum();
+            var roll = Dice.Roll(quantity).D(die).AsSum();
             Assert.That(roll, Is.InRange(quantity, quantity * die));
         }
     }

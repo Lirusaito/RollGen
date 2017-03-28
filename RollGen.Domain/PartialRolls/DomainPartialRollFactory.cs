@@ -3,7 +3,7 @@ using System;
 
 namespace RollGen.Domain.PartialRolls
 {
-    internal class DomainPartialRollFactory : PartialRollFactory
+    internal class DomainPartialRollFactory : IPartialRollFactory
     {
         private readonly Random random;
         private readonly ExpressionEvaluator expressionEvaluator;

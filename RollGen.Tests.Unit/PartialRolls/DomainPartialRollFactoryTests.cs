@@ -9,7 +9,7 @@ namespace RollGen.Tests.Unit.PartialRolls
     [TestFixture]
     public class DomainPartialRollFactoryTests
     {
-        private PartialRollFactory partialRollFactory;
+        private IPartialRollFactory partialRollFactory;
         private Mock<Random> mockRandom;
         private Mock<ExpressionEvaluator> mockExpressionEvaluator;
 
@@ -43,8 +43,8 @@ namespace RollGen.Tests.Unit.PartialRolls
             var firstPartialRoll = partialRollFactory.Build(42);
             var secondPartialRoll = partialRollFactory.Build(42);
 
-            var firstRoll = firstPartialRoll.d(9266).AsSum();
-            var secondRoll = secondPartialRoll.d(9266).AsSum();
+            var firstRoll = firstPartialRoll.D(9266).AsSum();
+            var secondRoll = secondPartialRoll.D(9266).AsSum();
 
             Assert.That(secondRoll, Is.EqualTo(firstRoll));
             Assert.That(firstRoll, Is.EqualTo(3788862));

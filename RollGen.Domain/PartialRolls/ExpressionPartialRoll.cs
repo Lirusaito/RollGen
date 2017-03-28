@@ -79,7 +79,7 @@ namespace RollGen.Domain.PartialRolls
             return evaluatedExpression;
         }
 
-        public override PartialRoll d(int die)
+        public override PartialRoll D(int die)
         {
             throw new NotImplementedException("Cannot yet implement paranthetical expressions");
         }

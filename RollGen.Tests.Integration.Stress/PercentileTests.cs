@@ -5,7 +5,7 @@ namespace RollGen.Tests.Integration.Stress
     [TestFixture]
     public class PercentileTests : ProvidedDiceTests
     {
-        protected override int die
+        protected override int Die
         {
             get { return 100; }
         }

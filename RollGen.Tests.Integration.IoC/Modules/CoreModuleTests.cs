@@ -14,8 +14,8 @@ namespace RollGen.Tests.Bootstrap.Modules
         [Test]
         public void DiceAreNotCreatedAsSingletons()
         {
-            var dice1 = GetNewInstanceOf<Dice>();
-            var dice2 = GetNewInstanceOf<Dice>();
+            var dice1 = GetNewInstanceOf<IDice>();
+            var dice2 = GetNewInstanceOf<IDice>();
             Assert.That(dice1, Is.Not.EqualTo(dice2));
         }
 
@@ -44,7 +44,7 @@ namespace RollGen.Tests.Bootstrap.Modules
         [Test]
         public void PartialRollFactoryIsInjected()
         {
-            var factory = GetNewInstanceOf<PartialRollFactory>();
+            var factory = GetNewInstanceOf<IPartialRollFactory>();
             Assert.That(factory, Is.Not.Null);
             Assert.That(factory, Is.InstanceOf<DomainPartialRollFactory>());
         }

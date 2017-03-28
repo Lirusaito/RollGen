@@ -10,9 +10,9 @@ namespace RollGen.Tests.Integration.Stress
     public class RandomSeedTests : StressTests
     {
         [Inject]
-        public Dice Dice1 { get; set; }
+        public IDice Dice1 { get; set; }
         [Inject]
-        public Dice Dice2 { get; set; }
+        public IDice Dice2 { get; set; }
 
         private List<int> dice1Rolls;
         private List<int> dice2Rolls;
@@ -36,7 +36,7 @@ namespace RollGen.Tests.Integration.Stress
             Assert.That(different, Is.True);
         }
 
-        private void PopulateRolls(Dice dice1, Dice dice2)
+        private void PopulateRolls(IDice dice1, IDice dice2)
         {
             var firstRoll = dice1.Roll().Percentile().AsSum();
             dice1Rolls.Add(firstRoll);

@@ -8,7 +8,7 @@ namespace RollGen.Tests.Integration.Stress
     public class ExpressionTests : StressTests
     {
         [Inject]
-        public Dice Dice { get; set; }
+        public IDice Dice { get; set; }
 
         [TestCase("1+2-(3*4/5)%6", 1, 1)]
         [TestCase("1d2+3", 4, 5)]

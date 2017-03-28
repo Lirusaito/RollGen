@@ -67,7 +67,7 @@ namespace RollGen.Domain.PartialRolls
             return percentage <= threshold;
         }
 
-        public override PartialRoll d(int die)
+        public override PartialRoll D(int die)
         {
             CurrentRollExpression += $"d{die}";
             return this;

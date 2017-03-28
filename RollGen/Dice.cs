@@ -1,6 +1,6 @@
 ﻿namespace RollGen
 {
-    public interface Dice
+    public interface IDice
     {
         PartialRoll Roll(int quantity = 1);
         PartialRoll Roll(string rollExpression);

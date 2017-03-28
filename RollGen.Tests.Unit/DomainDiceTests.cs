@@ -10,15 +10,15 @@ namespace RollGen.Tests.Unit
     [TestFixture]
     public class DomainDiceTests
     {
-        private Dice dice;
-        private Mock<PartialRollFactory> mockPartialRollFactory;
+        private IDice dice;
+        private Mock<IPartialRollFactory> mockPartialRollFactory;
         private Mock<PartialRoll> mockPartialRoll;
         private Queue<int> quantities;
 
         [SetUp]
         public void Setup()
         {
-            mockPartialRollFactory = new Mock<PartialRollFactory>();
+            mockPartialRollFactory = new Mock<IPartialRollFactory>();
             dice = new DomainDice(mockPartialRollFactory.Object);
 
             mockPartialRoll = new Mock<PartialRoll>();
