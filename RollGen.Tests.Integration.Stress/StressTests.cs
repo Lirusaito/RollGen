@@ -13,14 +13,16 @@ namespace RollGen.Tests.Integration.Stress
         [OneTimeSetUp]
         public void StressSetup()
         {
-            var options = new StressorOptions();
-            options.RunningAssembly = Assembly.GetExecutingAssembly();
-
+            var options = new StressorOptions()
+            {
+                RunningAssembly = Assembly.GetExecutingAssembly(),
+                IsFullStress =
 #if STRESS
-            options.IsFullStress = true;
+                    true,
 #else
-            options.IsFullStress = false;
+                    false,
 #endif
+            };
 
             stressor = new Stressor(options);
         }
